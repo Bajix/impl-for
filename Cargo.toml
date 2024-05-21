@@ -1,0 +1,16 @@
+[workspace]
+resolver = "2"
+members = [
+  "crates/impl-for",
+  "crates/into-bytes",
+]
+
+[profile.release]
+lto = "fat"
+opt-level = 3
+codegen-units = 1
+
+[profile.bench]
+lto = "fat"
+opt-level = 3
+codegen-units = 1

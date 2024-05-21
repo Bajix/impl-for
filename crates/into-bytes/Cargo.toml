@@ -1,0 +1,22 @@
+[package]
+name = "into-bytes"
+authors = ["Thomas Sieverding <Thomas@bajix.com>"]
+edition = "2021"
+version = "0.1.0"
+description = "For converting into Vec<u8>"
+readme = "./README.md"
+license = "MIT"
+repository = "https://github.com/Bajix/impl-for/"
+
+[lib]
+test = false
+doctest = false
+
+[dependencies]
+impl-for = { path = "../impl-for", version = "0.1.0" }
+itoa = "1.0"
+ryu = "1.0"
+
+[package.metadata.docs.rs]
+all-features = false
+rustdoc-args = ["--cfg", "docsrs"]
