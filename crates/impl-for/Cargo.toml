@@ -2,7 +2,7 @@
 name = "impl-for"
 authors = ["Thomas Sieverding <Thomas@bajix.com>"]
 edition = "2021"
-version = "0.1.0"
+version = "0.1.1"
 description = "A proc macro to impl for multiple types"
 readme = "../../README.md"
 license = "MIT"
