@@ -2,7 +2,7 @@ use std::{collections::HashMap, mem};
 
 use darling::{export::NestedMeta, FromMeta, ToTokens};
 use proc_macro2::Ident;
-use replace_types::ReplaceTypes;
+use replace_types::{ReplaceTypes, VisitMut};
 use syn::{parse_macro_input, Attribute, ItemImpl, Path, TypePath};
 
 fn parse_substitutions(
@@ -114,7 +114,7 @@ pub fn impl_for(
         .into_iter()
         .map(|substitutions| {
             let mut item_impl = input.clone();
-            item_impl.replace_types(&substitutions);
+            ReplaceTypes::new(substitutions).visit_item_impl_mut(&mut item_impl);
             proc_macro::TokenStream::from(item_impl.into_token_stream())
         })
         .collect::<proc_macro::TokenStream>()

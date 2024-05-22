@@ -16,7 +16,7 @@ proc-macro = true
 [dependencies]
 darling = "0.20"
 proc-macro2 = "1"
-replace-types = "0.1.0"
+replace-types = "0.2"
 syn = { version = "2", features = [] }
 
 [package.metadata.docs.rs]
