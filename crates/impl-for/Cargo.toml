@@ -2,8 +2,8 @@
 name = "impl-for"
 authors = ["Thomas Sieverding <Thomas@bajix.com>"]
 edition = "2021"
-version = "0.2.0"
-description = "A proc macro to impl for multiple types"
+version = "0.2.1"
+description = "Macros to impl for multiple types"
 readme = "../../README.md"
 license = "MIT"
 repository = "https://github.com/Bajix/impl-for/"

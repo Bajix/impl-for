@@ -2,7 +2,7 @@
 [![Cargo](https://img.shields.io/crates/v/impl-for.svg)](https://crates.io/crates/impl-for)
 [![Documentation](https://docs.rs/impl-for/badge.svg)](https://docs.rs/impl-for)
 
-The `impl_for` macro is used for repeating implementations with type substitutions.
+Macros for repeating implementations with type substitutions.
 
 ## Example
 
