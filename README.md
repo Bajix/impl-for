@@ -34,16 +34,7 @@ itoa_into_bytes!(usize);
 
 After:
 ```rust
-#[impl_for(T = "i8")]
-#[impl_for(T = "u8")]
-#[impl_for(T = "i16")]
-#[impl_for(T = "u16")]
-#[impl_for(T = "i32")]
-#[impl_for(T = "u32")]
-#[impl_for(T = "i64")]
-#[impl_for(T = "u64")]
-#[impl_for(T = "isize")]
-#[impl_for(T = "usize")]
+#[impl_for_each(i8, u8, i16, u16, i32, u32, i64, isize, usize)]
 impl IntoBytes for T {
     fn into_bytes(self) -> Vec<u8> {
         let mut buf = ::itoa::Buffer::new();

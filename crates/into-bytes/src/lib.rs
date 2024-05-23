@@ -3,23 +3,14 @@ use core::num::{
     NonZeroU64, NonZeroU8, NonZeroUsize,
 };
 
-use impl_for::impl_for;
+use impl_for::impl_for_each;
 
 /// Extension trait for converting into `Vec<u8>`
 pub trait IntoBytes {
     fn into_bytes(self) -> Vec<u8>;
 }
 
-#[impl_for(T = "i8")]
-#[impl_for(T = "u8")]
-#[impl_for(T = "i16")]
-#[impl_for(T = "u16")]
-#[impl_for(T = "i32")]
-#[impl_for(T = "u32")]
-#[impl_for(T = "i64")]
-#[impl_for(T = "u64")]
-#[impl_for(T = "isize")]
-#[impl_for(T = "usize")]
+#[impl_for_each(i8, u8, i16, u16, i32, u32, i64, u64, isize, usize)]
 impl IntoBytes for T {
     fn into_bytes(self) -> Vec<u8> {
         let mut buf = ::itoa::Buffer::new();
@@ -28,16 +19,18 @@ impl IntoBytes for T {
     }
 }
 
-#[impl_for(T = "NonZeroU8")]
-#[impl_for(T = "NonZeroI8")]
-#[impl_for(T = "NonZeroU16")]
-#[impl_for(T = "NonZeroI16")]
-#[impl_for(T = "NonZeroU32")]
-#[impl_for(T = "NonZeroI32")]
-#[impl_for(T = "NonZeroU64")]
-#[impl_for(T = "NonZeroI64")]
-#[impl_for(T = "NonZeroUsize")]
-#[impl_for(T = "NonZeroIsize")]
+#[impl_for_each(
+    NonZeroU8,
+    NonZeroI8,
+    NonZeroU16,
+    NonZeroI16,
+    NonZeroU32,
+    NonZeroI32,
+    NonZeroU64,
+    NonZeroI64,
+    NonZeroUsize,
+    NonZeroIsize
+)]
 impl IntoBytes for T {
     fn into_bytes(self) -> Vec<u8> {
         let mut buf = ::itoa::Buffer::new();
@@ -46,8 +39,7 @@ impl IntoBytes for T {
     }
 }
 
-#[impl_for(T = "f32")]
-#[impl_for(T = "f64")]
+#[impl_for_each(f32, f64)]
 impl IntoBytes for T {
     fn into_bytes(self) -> Vec<u8> {
         let mut buf = ::ryu::Buffer::new();
