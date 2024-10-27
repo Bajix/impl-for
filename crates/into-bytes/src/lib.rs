@@ -1,3 +1,8 @@
+#![no_std]
+
+extern crate alloc;
+
+use alloc::{string::String, vec::Vec};
 use core::num::{
     NonZeroI16, NonZeroI32, NonZeroI64, NonZeroI8, NonZeroIsize, NonZeroU16, NonZeroU32,
     NonZeroU64, NonZeroU8, NonZeroUsize,
@@ -51,9 +56,9 @@ impl IntoBytes for T {
 impl IntoBytes for bool {
     fn into_bytes(self) -> Vec<u8> {
         if self {
-            vec![1]
+            Vec::from([1])
         } else {
-            vec![0]
+            Vec::from([0])
         }
     }
 }
