@@ -69,7 +69,7 @@ impl IntoBytes for String {
     }
 }
 
-impl<'a> IntoBytes for &'a str {
+impl IntoBytes for &str {
     fn into_bytes(self) -> Vec<u8> {
         self.as_bytes().to_vec()
     }
@@ -81,7 +81,7 @@ impl IntoBytes for Vec<u8> {
     }
 }
 
-impl<'a> IntoBytes for &'a [u8] {
+impl IntoBytes for &[u8] {
     fn into_bytes(self) -> Vec<u8> {
         self.to_vec()
     }
