@@ -2,7 +2,7 @@
 name = "into-bytes"
 authors = ["Thomas Sieverding <Thomas@bajix.com>"]
 edition = "2021"
-version = "0.1.1"
+version = "0.2.0"
 description = "For converting into Vec<u8>"
 readme = "./README.md"
 license = "MIT"
