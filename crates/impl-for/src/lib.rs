@@ -120,7 +120,6 @@ pub fn impl_for(
         .collect::<proc_macro::TokenStream>()
 }
 
-
 /// Repeat an implementation for each type with `T` replaced
 ///
 /// ## Example
@@ -146,27 +145,37 @@ pub fn impl_for_each(
 ) -> proc_macro::TokenStream {
     let input = parse_macro_input!(input as ItemImpl);
 
-    let substitutions_list: Vec<HashMap<TypePath, TypePath>> = match NestedMeta::parse_meta_list(args.into()).map_err(darling::Error::from).and_then(|meta_list| {
-        PathList::from_list(meta_list.as_slice())
-    }) {
-        Ok(substitutions) => {
-            let t_type = TypePath {
-                qself: None,
-                path: Path::from(Ident::from_string("T").unwrap())
-            };
-
-            substitutions.iter().map(|path| {
-                HashMap::<TypePath, TypePath>::from([(t_type.clone(), TypePath {
+    let substitutions_list: Vec<HashMap<TypePath, TypePath>> =
+        match NestedMeta::parse_meta_list(args.into())
+            .map_err(darling::Error::from)
+            .and_then(|meta_list| PathList::from_list(meta_list.as_slice()))
+        {
+            Ok(substitutions) => {
+                let t_type = TypePath {
                     qself: None,
-                    path: path.to_owned()
-                }); 1])
-            }).collect()
-        },
-        Err(err) => {
-            return err.write_errors().into();
-        }
-    };
-    
+                    path: Path::from(Ident::from_string("T").unwrap()),
+                };
+
+                substitutions
+                    .iter()
+                    .map(|path| {
+                        HashMap::<TypePath, TypePath>::from(
+                            [(
+                                t_type.clone(),
+                                TypePath {
+                                    qself: None,
+                                    path: path.to_owned(),
+                                },
+                            ); 1],
+                        )
+                    })
+                    .collect()
+            }
+            Err(err) => {
+                return err.write_errors().into();
+            }
+        };
+
     substitutions_list
         .into_iter()
         .map(|substitutions| {
