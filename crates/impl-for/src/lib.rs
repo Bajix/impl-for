@@ -31,6 +31,8 @@ fn parse_substitutions(
 /// ## Example
 ///
 /// ```
+/// use impl_for::impl_for;
+///
 /// pub trait IntoBytes {
 ///     fn into_bytes(self) -> Vec<u8>;
 /// }
@@ -125,6 +127,8 @@ pub fn impl_for(
 /// ## Example
 ///
 /// ```
+/// use impl_for::impl_for_each;
+///
 /// pub trait IntoBytes {
 ///     fn into_bytes(self) -> Vec<u8>;
 /// }

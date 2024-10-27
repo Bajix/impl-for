@@ -13,6 +13,9 @@ test = false
 doctest = false
 proc-macro = true
 
+[dev-dependencies]
+itoa = "1.0"
+
 [dependencies]
 darling = "0.20"
 proc-macro2 = "1"
